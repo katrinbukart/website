@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extreme Temperature and Aging — Katrin Burkart, PhD</title>
+<style>
+  :root {
+    --sage: #B8E6C9;
+    --sage-deep: #8FD3A8;
+    --mint-bg: #F3FBF5;
+    --lavender: #C9B6F2;
+    --violet: #7B5EC7;
+    --violet-deep: #4E3A87;
+    --ink: #2B2438;
+    --white: #FFFFFF;
+  }
+
+  html {
+    font-size: clamp(14px, 12px + 0.6vw, 18px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--mint-bg);
+    line-height: 1.65;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(75,58,135,0.06);
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--violet-deep);
+  }
+  .logo span { color: var(--sage-deep); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--violet); }
+  nav a.active { color: var(--violet-deep); font-weight: 700; }
+
+  .nav-cta {
+    background: var(--violet);
+    color: var(--white);
+    padding: 0.625rem 1.375rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .page-hero {
+    padding: 4.375rem 3rem;
+    background: linear-gradient(120deg, var(--sage) 0%, var(--lavender) 100%);
+  }
+  .page-hero-inner { max-width: 68.75rem; margin: 0 auto; }
+  .hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--violet-deep);
+    margin-bottom: 0.875rem;
+  }
+  .page-hero h1 {
+    font-size: 2.4rem;
+    color: var(--violet-deep);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .page-hero p {
+    font-size: 1.05rem;
+    color: #4a4358;
+    max-width: 47.5rem;
+  }
+
+  .section { padding: 3rem 3rem 5rem; max-width: 48.75rem; margin: 0 auto; }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--violet-deep);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .back-link:hover { color: var(--violet); }
+
+  .detail-body p {
+    font-size: 1.05rem;
+    color: #3a3444;
+    margin-bottom: 1.25rem;
+  }
+  .detail-body a.ref {
+    color: var(--violet-deep);
+    font-style: italic;
+    text-decoration: none;
+    border-bottom: 1px solid var(--lavender);
+  }
+  .detail-body a.ref:hover { color: var(--violet); border-color: var(--violet); }
+
+  .stat-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 0.5rem 0 2rem;
+  }
+  .stat-card {
+    flex: 1 1 12rem;
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-top: 4px solid var(--sage-deep);
+  }
+  .stat-card .stat-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--violet-deep);
+    line-height: 1.2;
+  }
+  .stat-card .stat-label {
+    font-size: 0.85rem;
+    color: #5a5468;
+    margin-top: 0.3rem;
+  }
+
+  figure.fig {
+    margin: 2rem 0;
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+  }
+  figure.fig img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    display: block;
+  }
+  figure.fig figcaption {
+    font-size: 0.85rem;
+    color: #5a5468;
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  .detail-body h2 {
+    font-size: 1.3rem;
+    color: var(--violet-deep);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .tool-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-top: 2rem;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-top: 4px solid var(--sage-deep);
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-wrap: wrap;
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(75,58,135,0.14);
+  }
+  .tool-card.type-publication { border-top-color: var(--violet); }
+  .tool-card .tool-icon {
+    flex-shrink: 0;
+    width: 10rem;
+    height: 6.25rem;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    box-shadow: 0 2px 8px rgba(75,58,135,0.15);
+  }
+  .tool-card .tool-text .tool-label {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--sage-deep);
+    margin-bottom: 0.3rem;
+  }
+  .tool-card.type-publication .tool-text .tool-label { color: var(--violet); }
+  .tool-card .tool-text h3 {
+    color: var(--violet-deep);
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+  .tool-card .tool-text p {
+    font-size: 0.9rem;
+    color: #5a5468;
+    margin-bottom: 0;
+  }
+  .tool-card .tool-arrow {
+    margin-left: auto;
+    font-weight: 700;
+    color: var(--violet);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    padding-left: 1rem;
+  }
+
+  .tool-card-row-heading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--violet-deep);
+    margin-top: 2.5rem;
+  }
+  .tool-card-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .tool-card-row .tool-card {
+    flex: 1 1 20rem;
+    margin-top: 0;
+  }
+
+  footer {
+    background: var(--ink);
+    color: #cfc7dd;
+    text-align: center;
+    padding: 1.75rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--sage); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Katrin Burkart<span>.</span></div>
+  <nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="CV.KatrinBurkart_June2026.pdf" target="_blank">CV</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="https://scholar.google.com/citations?user=j41oC7kAAAAJ&hl=de" target="_blank">Publications</a></li>
+  </ul></nav>
+  <a class="nav-cta" href="https://www.linkedin.com/in/katrin-burkart/" target="_blank">LinkedIn</a>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Research Area — NIH/NIA R01</div>
+    <h1>Extreme Temperature and Aging in the U.S.</h1>
+    <p>A geographically granular assessment of present and future temperature-related health risk in aging populations, by race and ethnicity.</p>
+  </div>
+</section>
+
+<section class="section">
+  <a class="back-link" href="research.html">&larr; Back to Research</a>
+  <div class="detail-body">
+    <p>Extreme temperature is now the leading environmental risk factor in North America, and its toll is set to grow. As the U.S. population aged 65 and older is projected to double to 98 million by 2060, and climate change amplifies heat extremes, older adults with multiple chronic conditions — COPD, diabetes, cardiovascular disease — face rapidly escalating risk. Yet no systematic assessment of temperature related mortality, broken down by cause, exists across diseases, ages, and racial and ethnic groups at fine spatial scale: most studies are limited to individual cities, current estimates lack risk functions specific to age, and no comparative assessment of intervention effectiveness by location has been done. As Principal Investigator of a five year, $3.7 million R01 grant from the National Institute on Aging (NIA/NIH), I am leading research to close these gaps.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">~104,000</div>
+        <div class="stat-label">deaths attributable to non-optimal temperature in the U.S. in 2023 — more than air pollution</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1.7M</div>
+        <div class="stat-label">DALYs lost to non-optimal temperature nationally</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">17</div>
+        <div class="stat-label">disease causes significantly associated with temperature, including ischemic heart disease, stroke, and lower respiratory infections</div>
+      </div>
+    </div>
+
+    <p>Preliminary GBD analyses I've led show striking geographic patterns beneath these national numbers: heat impacts are concentrated in Arizona, Texas, and Louisiana, while cold impacts are highest in West Virginia and across the Midwest — with unexpected cold mortality also appearing in Florida and Hawaii, underscoring that risk exists even in mild climates. Much of this variation is currently masked by state level GBD estimates, which obscure large heterogeneity within states.</p>
+
+    <figure class="fig">
+      <img src="temp-state-map.png" alt="Temperature-attributable mortality by US state">
+      <figcaption>Figure 1: Heat and cold related deaths in U.S. states (age standardized rate per 100,000, GBD 2023).</figcaption>
+    </figure>
+
+    <p>Current GBD estimates also lack risk functions specific to age, likely underestimating the burden already carried by older adults. My own global projections indicate that heat related deaths may double by the end of the century under high emission scenarios, and that reductions in cold mortality will not be enough to offset those gains — a concerning trajectory as the population most vulnerable to temperature extremes continues to grow.</p>
+
+    <figure class="fig">
+      <img src="temp-erc-curves.png" alt="Exposure-response curves by temperature zone">
+      <figcaption>Figure 2: Exposure-response curves by temperature zone, showing how mortality risk rises at both ends of the local temperature distribution.</figcaption>
+    </figure>
+
+    <h2>Study design</h2>
+    <p>The project is guided by three aims. Aim 1 derives risk functions for temperature mortality, both all cause and broken down by specific cause, disaggregated by age, sex, and race/ethnicity, using a hybrid Bayesian meta-regression (MR-BRT) framework applied to spatially explicit U.S. mortality data coded by ICD from 1990 to 2019, paired with high resolution 4×4 km gridded temperature exposure that captures urban heat islands and local micro climate variation. Aim 2 projects these impacts through 2100 by combining Aim 1's risk functions with downscaled climate projections across the IPCC's SSP1 2.6 through SSP5 8.5 emission scenarios and GBD Future Health Scenarios population projections that account for aging, socioeconomic change, and shifting rates of comorbidity. Aim 3 evaluates the risk reduction potential of five interventions — weatherization, residential air conditioning, green roofs and urban vegetation, urban cooling strategies such as reflective surfaces and shade, and municipal heat action plans — producing guidance for policymakers specific to each location and population.</p>
+
+    <figure class="fig">
+      <img src="temp-age-distribution.png" alt="Age distribution of deaths attributable to low and high temperature">
+      <figcaption>Figure 3: Age distribution of deaths attributable to low and high temperature — risk rises sharply after age 65.</figcaption>
+    </figure>
+
+    <p>Equity is central to this work: analyses throughout account for how risk varies by age, race and ethnicity, and socioeconomic status, so that structurally vulnerable communities can be identified for priority investment rather than averaged away in national totals. A Policy Advisory Panel — with representatives from AARP, ASTHO, NACCHO, and the San Francisco Department of Public Health — helps ensure the findings translate into actionable guidance for public health agencies, from optimizing the placement of cooling centers to informing municipal heat action plans and long term infrastructure decisions. Results will be shared through peer reviewed publications and an interactive online visualization tool built for scientists, policymakers, and the public alike.</p>
+
+    <p class="tool-card-row-heading">Explore further</p>
+    <div class="tool-card-row">
+      <a class="tool-card" href="https://vizhub.healthdata.org/gbd-compare/" target="_blank">
+        <img class="tool-icon" src="GBD_compare_thumb.jpg" alt="GBD Compare data visualization tool">
+        <div class="tool-text">
+          <span class="tool-label">Interactive tool</span>
+          <h3>Check out our temperature estimates in GBD Compare</h3>
+          <p>Explore the interactive GBD Compare data visualization tool from IHME.</p>
+        </div>
+        <span class="tool-arrow">Open →</span>
+      </a>
+
+      <a class="tool-card type-publication" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)01700-1/fulltext" target="_blank">
+        <img class="tool-icon" src="temperature.png" alt="Global burden of non-optimal temperature">
+        <div class="tool-text">
+          <span class="tool-label">Publication</span>
+          <h3>The global burden of non-optimal temperature</h3>
+          <p>The methodology underpinning this R01's approach to temperature risk by cause.</p>
+        </div>
+        <span class="tool-arrow">Read →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Katrin Burkart. All rights reserved.
+</footer>
+
+</body>
+</html>

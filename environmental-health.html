@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Environmental Health — Katrin Burkart, PhD</title>
+<style>
+  :root {
+    --sage: #B8E6C9;
+    --sage-deep: #8FD3A8;
+    --mint-bg: #F3FBF5;
+    --lavender: #C9B6F2;
+    --violet: #7B5EC7;
+    --violet-deep: #4E3A87;
+    --ink: #2B2438;
+    --white: #FFFFFF;
+  }
+
+  html {
+    font-size: clamp(14px, 12px + 0.6vw, 18px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--mint-bg);
+    line-height: 1.65;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(75,58,135,0.06);
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--violet-deep);
+  }
+  .logo span { color: var(--sage-deep); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--violet); }
+  nav a.active { color: var(--violet-deep); font-weight: 700; }
+
+  .nav-cta {
+    background: var(--violet);
+    color: var(--white);
+    padding: 0.625rem 1.375rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .page-hero {
+    padding: 4.375rem 3rem;
+    background: linear-gradient(120deg, var(--sage) 0%, var(--lavender) 100%);
+  }
+  .page-hero-inner { max-width: 68.75rem; margin: 0 auto; }
+  .hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--violet-deep);
+    margin-bottom: 0.875rem;
+  }
+  .page-hero h1 {
+    font-size: 2.4rem;
+    color: var(--violet-deep);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .page-hero p {
+    font-size: 1.05rem;
+    color: #4a4358;
+    max-width: 47.5rem;
+  }
+
+  .section { padding: 3rem 3rem 5rem; max-width: 48.75rem; margin: 0 auto; }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--violet-deep);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .back-link:hover { color: var(--violet); }
+
+  .detail-body p {
+    font-size: 1.05rem;
+    color: #3a3444;
+    margin-bottom: 1.25rem;
+  }
+  .detail-body a.ref {
+    color: var(--violet-deep);
+    font-style: italic;
+    text-decoration: none;
+    border-bottom: 1px solid var(--lavender);
+  }
+  .detail-body a.ref:hover { color: var(--violet); border-color: var(--violet); }
+
+  .tool-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-top: 2rem;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-top: 4px solid var(--sage-deep);
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-wrap: wrap;
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(75,58,135,0.14);
+  }
+  .tool-card.type-publication { border-top-color: var(--violet); }
+  .tool-card .tool-icon {
+    flex-shrink: 0;
+    width: 10rem;
+    height: 6.25rem;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    box-shadow: 0 2px 8px rgba(75,58,135,0.15);
+  }
+  .tool-card .tool-text .tool-label {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--sage-deep);
+    margin-bottom: 0.3rem;
+  }
+  .tool-card.type-publication .tool-text .tool-label { color: var(--violet); }
+  .tool-card .tool-text h3 {
+    color: var(--violet-deep);
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+  .tool-card .tool-text p {
+    font-size: 0.9rem;
+    color: #5a5468;
+    margin-bottom: 0;
+  }
+  .tool-card .tool-arrow {
+    margin-left: auto;
+    font-weight: 700;
+    color: var(--violet);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    padding-left: 1rem;
+  }
+
+  .tool-card-row-heading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--violet-deep);
+    margin-top: 2.5rem;
+  }
+  .tool-card-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .tool-card-row .tool-card {
+    flex: 1 1 20rem;
+    margin-top: 0;
+  }
+
+  footer {
+    background: var(--ink);
+    color: #cfc7dd;
+    text-align: center;
+    padding: 1.75rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--sage); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Katrin Burkart<span>.</span></div>
+  <nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="CV.KatrinBurkart_June2026.pdf" target="_blank">CV</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="https://scholar.google.com/citations?user=j41oC7kAAAAJ&hl=de" target="_blank">Publications</a></li>
+  </ul></nav>
+  <a class="nav-cta" href="https://www.linkedin.com/in/katrin-burkart/" target="_blank">LinkedIn</a>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Research Area</div>
+    <h1>Environmental Health</h1>
+    <p>Quantifying how air pollution and other environmental exposures shape disease risk, from childhood asthma to dementia.</p>
+  </div>
+</section>
+
+<section class="section">
+  <a class="back-link" href="research.html">&larr; Back to Research</a>
+  <div class="detail-body">
+    <p>A large share of my research quantifies how the air we breathe affects our health across the life course. Air pollution — ambient and household, particulate matter, ozone, and nitrogen dioxide — is one of the leading environmental contributors to the global disease burden, and I've worked to expand the evidence base connecting specific pollutants to specific health outcomes, from childhood through old age, so that the true scale of its impact is reflected in global health estimates.</p>
+
+    <p>In childhood, I led global estimates of asthma attributable to NO₂ exposure, published as <a class="ref" href="https://www.thelancet.com/journals/eclinm/article/PIIS2589-5370(25)00513-9/fulltext" target="_blank">Global, Regional, and National Estimates of the Burden of Childhood Asthma Attributable to NO₂ Exposure for 204 Countries and Territories</a> in eClinicalMedicine, work funded through a grant from the Health Effects Institute. Earlier in the life course, I spearheaded a mediation analysis assessing how air pollution affects reproductive health outcomes, published as <a class="ref" href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1003718" target="_blank">Ambient and household PM2.5 pollution and adverse perinatal outcomes: A meta-regression and analysis of attributable global burden for 204 countries and territories</a> in PLoS Medicine.</p>
+
+    <p>In adulthood, I led estimates of the burden of type-2 diabetes attributable to air pollution, detailed in <a class="ref" href="https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00122-X/fulltext" target="_blank">Estimates, Trends, and Drivers of the Global Burden of Type-2 Diabetes Attributable to PM2.5 Air Pollution, 1990–2019</a>, published in The Lancet Planetary Health. Building on this work, I was invited to contribute a Viewpoint on environmental cardiology, <a class="ref" href="https://www.jacc.org/doi/10.1016/j.jacc.2026.05.016" target="_blank">Environment and the Heart: Measuring the health impact of environmental risks and making it matter</a>, to the Journal of the American College of Cardiology, highlighting the relevance of environmental risk factors for heart health.</p>
+
+    <p>Later in life, I led research estimating the impact of long-term ambient PM2.5 exposure on dementia incidence — work that helped bring this risk-outcome pair into GBD 2023 — published as <a class="ref" href="https://www.nature.com/articles/s43587-025-00844-y" target="_blank">Health Effects of Long-Term Ambient Fine Particulate Matter (PM₂.₅) Exposure on Dementia: A Burden of Proof Study</a> in Nature Aging. Taken together, this body of work traces a single pollutant's reach across an entire lifetime — from a child's developing lungs to an aging brain — and makes the case for treating air quality as a core determinant of lifelong health, not a narrow environmental concern.</p>
+
+    <p class="tool-card-row-heading">Explore further</p>
+    <div class="tool-card-row">
+      <a class="tool-card" href="https://vizhub.healthdata.org/gbd-compare/" target="_blank">
+        <img class="tool-icon" src="GBD_compare_thumb.jpg" alt="GBD Compare data visualization tool">
+        <div class="tool-text">
+          <span class="tool-label">Interactive tool</span>
+          <h3>Check out our environmental risk estimates in GBD Compare</h3>
+          <p>Explore the interactive GBD Compare data visualization tool from IHME.</p>
+        </div>
+        <span class="tool-arrow">Open →</span>
+      </a>
+
+      <a class="tool-card type-publication" href="https://www.nature.com/articles/s43587-025-00844-y" target="_blank">
+        <img class="tool-icon" src="dementia.png" alt="Air pollution and dementia risk">
+        <div class="tool-text">
+          <span class="tool-label">Publication</span>
+          <h3>Air pollution and dementia risk</h3>
+          <p>Air pollution significantly increases the risk of dementia.</p>
+        </div>
+        <span class="tool-arrow">Read →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Katrin Burkart. All rights reserved.
+</footer>
+
+</body>
+</html>

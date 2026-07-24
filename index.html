@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katrin Burkart, PhD — Environmental Epidemiology &amp; Global Health Metrics</title>
+<style>
+  :root {
+    --sage: #B8E6C9;
+    --sage-deep: #8FD3A8;
+    --mint-bg: #F3FBF5;
+    --lavender: #C9B6F2;
+    --violet: #7B5EC7;
+    --violet-deep: #4E3A87;
+    --ink: #2B2438;
+    --white: #FFFFFF;
+  }
+
+  /* Fluid root scale: every rem-based size below scales together with the
+     viewport, so spacing, type, and layout keep the same proportions from
+     phone to desktop instead of jumping at fixed breakpoints. */
+  html {
+    font-size: clamp(14px, 12px + 0.6vw, 18px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--mint-bg);
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(75,58,135,0.06);
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--violet-deep);
+  }
+  .logo span { color: var(--sage-deep); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--violet); }
+
+  .nav-cta {
+    background: var(--violet);
+    color: var(--white);
+    padding: 0.625rem 1.375rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* HERO */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5.625rem 3rem;
+    background: radial-gradient(circle at 25% 25%, var(--lavender) 0%, var(--sage) 55%, var(--mint-bg) 100%);
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-text { max-width: 38.75rem; flex: 1 1 22rem; }
+  .hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--violet-deep);
+    margin-bottom: 0.875rem;
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+    color: var(--violet-deep);
+    margin-bottom: 0.625rem;
+    line-height: 1.15;
+  }
+  .hero .hero-role {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #4a4358;
+    margin-bottom: 1.375rem;
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: #4a4358;
+    margin-bottom: 1.75rem;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--violet-deep);
+    color: var(--white);
+    padding: 0.875rem 1.875rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--violet-deep);
+    padding: 0.875rem 1.875rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--violet-deep);
+  }
+  .hero-avatar {
+    width: 15rem;
+    height: 15rem;
+    max-width: 40vw;
+    max-height: 40vw;
+    border-radius: 50%;
+    background: var(--white);
+    border: 0.5rem solid var(--sage-deep);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--violet-deep);
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1.5rem;
+    padding: 3rem;
+    max-width: 68.75rem;
+    margin: 0 auto;
+  }
+  .stat-card {
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.06);
+    border-top: 4px solid var(--sage-deep);
+  }
+  .stat-card .num {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--violet-deep);
+  }
+  .stat-card .label {
+    font-size: 0.85rem;
+    color: #6a6378;
+    margin-top: 0.25rem;
+  }
+
+  /* ABOUT */
+  .section { padding: 3.75rem 3rem 5rem; max-width: 68.75rem; margin: 0 auto; }
+  .section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--sage-deep);
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+  }
+  .section h2 {
+    font-size: 2rem;
+    color: var(--violet-deep);
+    margin-bottom: 1.5rem;
+  }
+  .about-card {
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-left: 4px solid var(--sage-deep);
+    font-size: 1.05rem;
+    color: #3a3444;
+  }
+  .about-card p + p { margin-top: 1rem; }
+
+  /* QUICK LINKS */
+  .links-section { background: var(--white); }
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.75rem;
+    margin-top: 1.25rem;
+  }
+  .link-card {
+    background: var(--mint-bg);
+    border-radius: 1rem;
+    padding: 2rem 1.75rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+    border-top: 4px solid var(--lavender);
+  }
+  .link-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(75,58,135,0.12);
+  }
+  .link-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--lavender);
+    color: var(--violet-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.125rem;
+  }
+  .link-card h3 { color: var(--violet-deep); margin-bottom: 0.625rem; font-size: 1.2rem; }
+  .link-card p { font-size: 0.95rem; color: #5a5468; margin-bottom: 0.875rem; }
+  .link-arrow { font-weight: 700; color: var(--violet); font-size: 0.9rem; }
+
+  footer {
+    background: var(--ink);
+    color: #cfc7dd;
+    text-align: center;
+    padding: 1.75rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--sage); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Katrin Burkart<span>.</span></div>
+  <nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="CV.KatrinBurkart_June2026.pdf" target="_blank">CV</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="https://scholar.google.com/citations?user=j41oC7kAAAAJ&hl=de" target="_blank">Publications</a></li>
+  </ul></nav>
+  <a class="nav-cta" href="https://www.linkedin.com/in/katrin-burkart/" target="_blank">LinkedIn</a>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Environmental Epidemiology &amp; Global Health Metrics</div>
+    <h1>Dr. Katrin Burkart</h1>
+    <div class="hero-role">Assistant Professor, Department of Health Metrics Science, University of Washington</div>
+    <p>I study how environmental exposures — temperature, air pollution, and emerging viral diseases — shape health outcomes around the world. My work sits at the intersection of environmental science, epidemiology, and the Global Burden of Disease (GBD) study, translating complex environmental data into evidence that informs public health policy.</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="research.html">View Research</a>
+      <a class="btn-secondary" href="CV.KatrinBurkart_June2026.pdf" target="_blank">Full CV</a>
+    </div>
+  </div>
+  <div class="hero-avatar"><img src="burkart-headshot.jpg" alt="Dr. Katrin Burkart"></div>
+</section>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="num">90+</div>
+    <div class="label">Peer-reviewed publications</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">40,000+</div>
+    <div class="label">Citations</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">$9M+</div>
+    <div class="label">Research funding</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">60</div>
+    <div class="label">h-index</div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-title">About</div>
+  <h2>A little about my work</h2>
+  <div class="about-card">
+    <p>I am an Assistant Professor in the Department of Health Metrics Science at the University of Washington, with adjunct appointments in Global Health and Environmental &amp; Occupational Health Sciences. At the Institute for Health Metrics and Evaluation (IHME), I lead research on environmental and occupational risk factors within the Global Burden of Disease (GBD) study — spanning air pollution, temperature, and 24 other risk factors — and have spearheaded the first-ever global, cause-specific estimates of the burden of non-optimal temperature.</p>
+    <p>My research also extends to climate change projections and a newer program of work estimating the burden of viral diseases such as influenza and RSV, adapting the GBD's risk-assessment framework to population-level viral surveillance data. This work has been published in journals including <em>The Lancet</em>, <em>Nature Aging</em>, and <em>JACC</em>, and featured in outlets such as CNN and Scientific American.</p>
+    <p>Alongside research, I teach and mentor graduate students in Global Health and Health Metrics Science, and serve as an international expert with the WHO–WMO Global Heat Health Information Network and as a contributing author to the IPCC Sixth Assessment Report. Diversity, equity, and inclusion are central to how I teach, mentor, and design my research.</p>
+  </div>
+</section>
+
+<section class="section links-section">
+  <div class="section-title">Explore</div>
+  <h2>Where to go next</h2>
+  <div class="links-grid">
+    <a class="link-card" href="CV.KatrinBurkart_June2026.pdf" target="_blank">
+      <div class="link-icon">CV</div>
+      <h3>CV</h3>
+      <p>Full academic CV — education, positions, funding, publications, and honors.</p>
+      <span class="link-arrow">View CV →</span>
+    </a>
+    <a class="link-card" href="research.html">
+      <div class="link-icon">R</div>
+      <h3>Research</h3>
+      <p>Global Burden of Disease, climate change and health, and the burden of viral disease.</p>
+      <span class="link-arrow">Explore research →</span>
+    </a>
+    <a class="link-card" href="teaching.html">
+      <div class="link-icon">T</div>
+      <h3>Teaching</h3>
+      <p>Courses taught, mentorship, and my approach to teaching and advising students.</p>
+      <span class="link-arrow">See teaching →</span>
+    </a>
+    <a class="link-card" href="https://scholar.google.com/citations?user=j41oC7kAAAAJ&hl=de" target="_blank">
+      <div class="link-icon">P</div>
+      <h3>Publications</h3>
+      <p>Full list of peer-reviewed publications on Google Scholar.</p>
+      <span class="link-arrow">View on Google Scholar →</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Katrin Burkart. All rights reserved.
+</footer>
+
+</body>
+</html>

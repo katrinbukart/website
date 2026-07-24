@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching &amp; Mentorship — Katrin Burkart, PhD</title>
+<style>
+  :root {
+    --sage: #B8E6C9;
+    --sage-deep: #8FD3A8;
+    --mint-bg: #F3FBF5;
+    --lavender: #C9B6F2;
+    --violet: #7B5EC7;
+    --violet-deep: #4E3A87;
+    --ink: #2B2438;
+    --white: #FFFFFF;
+  }
+
+  /* Fluid root scale: every rem-based size below scales together with the
+     viewport, so spacing, type, and layout keep the same proportions from
+     phone to desktop instead of jumping at fixed breakpoints. */
+  html {
+    font-size: clamp(14px, 12px + 0.6vw, 18px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--mint-bg);
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(75,58,135,0.06);
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--violet-deep);
+  }
+  .logo span { color: var(--sage-deep); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--violet); }
+  nav a.active { color: var(--violet-deep); font-weight: 700; }
+
+  .nav-cta {
+    background: var(--violet);
+    color: var(--white);
+    padding: 0.625rem 1.375rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 4.375rem 3rem;
+    background: linear-gradient(120deg, var(--sage) 0%, var(--lavender) 100%);
+  }
+  .page-hero-inner { max-width: 68.75rem; margin: 0 auto; }
+  .hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--violet-deep);
+    margin-bottom: 0.875rem;
+  }
+  .page-hero h1 {
+    font-size: 2.4rem;
+    color: var(--violet-deep);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .page-hero p {
+    font-size: 1.05rem;
+    color: #4a4358;
+    max-width: 47.5rem;
+  }
+
+  /* SECTIONS */
+  .section { padding: 1.25rem 3rem 5rem; max-width: 68.75rem; margin: 0 auto; }
+  .section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--sage-deep);
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+  }
+  .section h2 {
+    font-size: 2rem;
+    color: var(--violet-deep);
+    margin-bottom: 1.5rem;
+  }
+  .section > p.lead {
+    font-size: 1.05rem;
+    color: #4a4358;
+    max-width: 48.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-card {
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-left: 4px solid var(--sage-deep);
+    font-size: 1.05rem;
+    color: #3a3444;
+  }
+  .about-card p + p { margin-top: 1rem; }
+
+  /* COURSES */
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+  .course-card {
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-top: 4px solid var(--lavender);
+  }
+  .course-card h3 { color: var(--violet-deep); font-size: 1.15rem; margin-bottom: 0.375rem; }
+  .course-meta {
+    font-size: 0.85rem;
+    color: #6a6378;
+    margin-bottom: 0.875rem;
+  }
+  .course-card p { font-size: 0.95rem; color: #4a4358; margin-bottom: 0.875rem; }
+  .badge {
+    background: var(--sage);
+    color: var(--violet-deep);
+    font-weight: 700;
+    padding: 0.3125rem 0.875rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+  .trainings-note {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #6a6378;
+  }
+
+  /* QUOTES */
+  .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .quote-card {
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.625rem 1.75rem;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-left: 4px solid var(--violet);
+    font-style: italic;
+    color: #3a3444;
+    font-size: 0.98rem;
+  }
+  .quote-card cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--violet-deep);
+    font-size: 0.82rem;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(120deg, var(--violet-deep), var(--violet));
+    text-align: center;
+    padding: 4.375rem 3rem;
+    color: var(--white);
+  }
+  .cta-section h2 { font-size: 2rem; margin-bottom: 0.875rem; }
+  .cta-section p { color: #e5ddfa; margin-bottom: 1.625rem; }
+  .btn-light {
+    background: var(--sage);
+    color: var(--violet-deep);
+    padding: 0.875rem 2.125rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  footer {
+    background: var(--ink);
+    color: #cfc7dd;
+    text-align: center;
+    padding: 1.75rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--sage); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Katrin Burkart<span>.</span></div>
+  <nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="CV.KatrinBurkart_June2026.pdf" target="_blank">CV</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="teaching.html" class="active">Teaching</a></li>
+    <li><a href="https://scholar.google.com/citations?user=j41oC7kAAAAJ&hl=de" target="_blank">Publications</a></li>
+  </ul></nav>
+  <a class="nav-cta" href="https://www.linkedin.com/in/katrin-burkart/" target="_blank">LinkedIn</a>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Teaching &amp; Mentorship</div>
+    <h1>Training the next generation of health scientists</h1>
+    <p>Teaching students to critically evaluate evidence and translate it into public health impact is one of the parts of my job I value most. My approach has been shaped by moving between academic systems, teaching through the disruptions of COVID-19, and a continued focus on building inclusive, supportive classrooms for students from all backgrounds.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">Philosophy</div>
+  <h2>How I approach teaching</h2>
+  <div class="about-card">
+    <p>As someone who identifies first as a scientist, I have worked consciously to translate a research-driven mindset into teaching strategies that resonate with diverse learners, and I find real fulfillment in watching students grow in confidence and independence over a course or across their academic trajectory. Diversity, equity, and inclusion are a cornerstone of my teaching and mentoring. As a female scientist from a working-class background, a non-native English speaker, and a member of a bi-racial, multi-ethnic family, I draw on my own experience of feeling different from the perceived "norm" in academic spaces to build classrooms where students feel seen, valued, and empowered — regardless of background.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">Courses</div>
+  <h2>What I teach</h2>
+  <p class="lead">Since joining the University of Washington, I have taught four courses spanning Health Metrics Science, Global Health, and Population Health Informatics, at both the graduate and undergraduate level.</p>
+  <div class="course-grid">
+    <div class="course-card">
+      <span class="badge">4.8–5.0 / 5</span>
+      <h3>HMS 530 — Global Burden of Disease: Methods and Results</h3>
+      <div class="course-meta">Graduate · Spring 2024–2026</div>
+      <p>Shares in-depth knowledge of GBD methods and risk assessment, covering comprehensive methods and real-world applications that build students' understanding of global health metrics.</p>
+    </div>
+    <div class="course-card">
+      <span class="badge">4.6 / 5</span>
+      <h3>GH 592B — Health Metrics Science Seminar</h3>
+      <div class="course-meta">Graduate journal club · Winter, Spring &amp; Autumn 2019, Winter 2020</div>
+      <p>Familiarizes graduate students with a diverse range of scientific literature, building skills to critically evaluate burden estimates, demographic and economic analyses, and methodological papers — including through a diversity, equity, and inclusion lens.</p>
+    </div>
+    <div class="course-card">
+      <span class="badge">Up to 4.9 / 5</span>
+      <h3>GH 511 — Problems in Global Health</h3>
+      <div class="course-meta">Graduate, online MPH curriculum · Summer 2022–2024, Winter 2023–2025</div>
+      <p>Introduces MPH students to Global Health, exploring how political, socioeconomic, cultural, and demographic conditions in low- and middle-income countries shape health and health services.</p>
+    </div>
+    <div class="course-card">
+      <h3>INFO 478 — Population Health Informatics</h3>
+      <div class="course-meta">Undergraduate, Information School · Spring 2021, Winter 2022</div>
+      <p>Introduces undergraduates to strategies and techniques for evaluating population health, using real data sources to build epidemiological, analytical, and data visualization skills. Taught remotely and in hybrid format during the COVID-19 pandemic.</p>
+    </div>
+  </div>
+  <p class="trainings-note">I have also led internal trainings at IHME, including the GBD Learning Week (November 2025) and the GBD Foundations Workshop (February 2026).</p>
+</section>
+
+<section class="section">
+  <div class="section-title">Other courses</div>
+  <h2>International Teaching</h2>
+  <p class="lead">Prior to joining the University of Washington, I taught a range of undergraduate and graduate courses in climatology, GIS, and environmental health methods in Germany.</p>
+  <div class="course-grid">
+    <div class="course-card">
+      <h3>Urban Health and the Built Environment</h3>
+      <div class="course-meta">Undergraduate seminar · Humboldt-Universität zu Berlin · Summer 2015</div>
+      <p>Block seminar examining the relationship between the built environment and urban health outcomes.</p>
+    </div>
+    <div class="course-card">
+      <h3>Analyzing Geodata in Health and Environmental Research Using R and QGIS</h3>
+      <div class="course-meta">Graduate seminar · Humboldt-Universität zu Berlin · Fall 2015</div>
+      <p>Two-day block seminar on statistical and GIS-based approaches to geodata in health and environmental research.</p>
+    </div>
+    <div class="course-card">
+      <h3>Bioclimate and Health</h3>
+      <div class="course-meta">Undergraduate · Humboldt-Universität zu Berlin · Summer 2014</div>
+      <p>Time-series analysis and statistical modeling for climate and health data.</p>
+    </div>
+    <div class="course-card">
+      <h3>A Web-Based GIS for Health and the Environment</h3>
+      <div class="course-meta">Graduate · Humboldt-Universität zu Berlin · Summer 2014</div>
+      <p>Statistical and GIS-based approaches to mapping health and the environment.</p>
+    </div>
+    <div class="course-card">
+      <h3>Advanced Terrain Climatology</h3>
+      <div class="course-meta">Graduate · Humboldt-Universität zu Berlin · Summer 2014</div>
+      <p>Weekly coursework plus a week of field work in terrain climatology.</p>
+    </div>
+    <div class="course-card">
+      <h3>Introduction to Climatology</h3>
+      <div class="course-meta">Undergraduate · Humboldt-Universität zu Berlin · Summer 2013 &amp; 2014</div>
+    </div>
+    <div class="course-card">
+      <h3>Scientific Programming with R</h3>
+      <div class="course-meta">Undergraduate · Humboldt-Universität zu Berlin · Winter 2013/14</div>
+    </div>
+    <div class="course-card">
+      <h3>Climate Change and Spatial Epidemiology</h3>
+      <div class="course-meta">International Summer School · University of Bielefeld, School of Public Health · September 2013</div>
+      <p>Using R for basic health statistics and data modelling, taught at the 5th International Summer School on Spatial Epidemiology, Climate and Health.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">In their words</div>
+  <h2>Student feedback</h2>
+  <div class="quote-grid">
+    <div class="quote-card">
+      "I love journal club — and this quarter was especially good."
+      <cite>GH 592B student</cite>
+    </div>
+    <div class="quote-card">
+      "This class was intellectually stimulating, and it stretched my thinking because it covered comprehensive methods and real-world applications of the Global Burden of Disease study, which enhanced my understanding of global health metrics."
+      <cite>HMS 530 student</cite>
+    </div>
+    <div class="quote-card">
+      "I appreciated the interconnected approach of all of the public health topics and I thought it was well organized."
+      <cite>GH 511 student</cite>
+    </div>
+    <div class="quote-card">
+      "The class has a respectful and inclusive learning environment."
+      <cite>GH 511 student</cite>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Katrin Burkart. All rights reserved.
+</footer>
+
+</body>
+</html>

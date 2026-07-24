@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Light Green & Purple Concept</title>
+<style>
+  :root {
+    --sage: #B8E6C9;
+    --sage-deep: #8FD3A8;
+    --mint-bg: #F3FBF5;
+    --lavender: #C9B6F2;
+    --violet: #7B5EC7;
+    --violet-deep: #4E3A87;
+    --ink: #2B2438;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--mint-bg);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(75,58,135,0.06);
+    z-index: 10;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--violet-deep);
+  }
+  .logo span { color: var(--sage-deep); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--violet); }
+
+  .nav-cta {
+    background: var(--violet);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* HERO */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 90px 48px;
+    background: linear-gradient(120deg, var(--sage) 0%, var(--lavender) 100%);
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-text { max-width: 560px; }
+  .hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--violet-deep);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    color: var(--violet-deep);
+    margin-bottom: 18px;
+    line-height: 1.15;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: #4a4358;
+    margin-bottom: 28px;
+  }
+  .hero-buttons { display: flex; gap: 16px; }
+  .btn-primary {
+    background: var(--violet-deep);
+    color: var(--white);
+    padding: 14px 30px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--violet-deep);
+    padding: 14px 30px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--violet-deep);
+  }
+  .hero-avatar {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 8px solid var(--sage-deep);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--violet);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* ABOUT */
+  .section { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+  .section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--sage-deep);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .section h2 {
+    font-size: 2rem;
+    color: var(--violet-deep);
+    margin-bottom: 24px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .about-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 16px rgba(75,58,135,0.08);
+    border-left: 4px solid var(--sage-deep);
+  }
+
+  /* PROJECTS */
+  .projects-section { background: var(--white); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 20px;
+  }
+  .project-card {
+    background: var(--mint-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .project-card:hover { transform: translateY(-6px); }
+  .project-thumb {
+    height: 160px;
+    background: linear-gradient(135deg, var(--lavender), var(--sage));
+  }
+  .project-body { padding: 20px; }
+  .project-body h3 { color: var(--violet-deep); margin-bottom: 8px; font-size: 1.1rem; }
+  .project-tag {
+    display: inline-block;
+    background: var(--lavender);
+    color: var(--violet-deep);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-top: 10px;
+  }
+
+  /* CONTACT / FOOTER */
+  .cta-section {
+    background: linear-gradient(120deg, var(--violet-deep), var(--violet));
+    text-align: center;
+    padding: 80px 48px;
+    color: var(--white);
+  }
+  .cta-section h2 { font-size: 2.2rem; margin-bottom: 16px; }
+  .cta-section p { color: #e5ddfa; margin-bottom: 30px; }
+  .btn-light {
+    background: var(--sage);
+    color: var(--violet-deep);
+    padding: 14px 34px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  footer {
+    background: var(--ink);
+    color: #cfc7dd;
+    text-align: center;
+    padding: 28px;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">studio<span>.</span></div>
+  <nav><ul>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul></nav>
+  <a class="nav-cta" href="#">Let's Talk</a>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Designer &amp; Developer</div>
+    <h1>Crafting calm, colorful digital experiences</h1>
+    <p>I design and build websites that feel fresh and considered — blending soft greens with rich purple accents for a look that's playful but polished.</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="#">View Work</a>
+      <a class="btn-secondary" href="#">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-avatar">Photo /<br>Avatar</div>
+</section>
+
+<section class="section">
+  <div class="section-title">About</div>
+  <h2>A little about my approach</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <p>I believe good design starts with restraint: one confident accent color, a calm neutral base, and typography that does the heavy lifting. This palette pairs a fresh sage green with a deep, confident violet — approachable but never boring.</p>
+    </div>
+    <div class="about-card">
+      <p>Light green suggests growth, clarity, and calm. Purple brings creativity and depth. Together they read as fresh and a little unexpected — great for portfolios, wellness brands, or creative studios.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section projects-section">
+  <div class="section-title">Selected Work</div>
+  <h2>Recent projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb"></div>
+      <div class="project-body">
+        <h3>Brand Refresh</h3>
+        <p>Identity &amp; web design for a wellness startup.</p>
+        <span class="project-tag">Branding</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb"></div>
+      <div class="project-body">
+        <h3>Product Landing Page</h3>
+        <p>Conversion-focused site for a SaaS launch.</p>
+        <span class="project-tag">Web Design</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb"></div>
+      <div class="project-body">
+        <h3>Portfolio Template</h3>
+        <p>Reusable design system for creatives.</p>
+        <span class="project-tag">UI Kit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Let's build something together</h2>
+  <p>Have a project in mind? I'd love to hear about it.</p>
+  <a class="btn-light" href="#">Start a Conversation</a>
+</section>
+
+<footer>
+  © 2026 Studio. Built with light green &amp; purple.
+</footer>
+
+</body>
+</html>
